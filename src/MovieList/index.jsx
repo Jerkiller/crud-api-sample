@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export const List = () => {
+export const MovieList = () => {
 
   const [data, setData] = useState(null);
 
@@ -15,7 +15,7 @@ export const List = () => {
 
   return (
     <ul>
-      {data && data.map((film) => {
+      {data != null && data.movies.map((film) => {
         console.log(film);
         return <li key={film.id}>
           <strong>{film.name}</strong>

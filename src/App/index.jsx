@@ -1,12 +1,14 @@
 import React from 'react';
-import { List } from '../List';
+import { MovieList } from '../MovieList';
+import { AddMovie } from '../AddMovie';
 import './styles.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <List />
+        <AddMovie />
+        <MovieList />
       </header>
     </div>
   );
