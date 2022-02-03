@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { App } from './App';
 import reportWebVitals from './reportWebVitals';
-import { Server, Model } from "miragejs"
+import { createServer, Model } from "miragejs"
 
-new Server({
+createServer({
   models: {
     movie: Model,
   },
@@ -25,12 +25,12 @@ new Server({
 
     this.post("/movies", (schema, request) => {
       let attrs = JSON.parse(request.requestBody);
-      return schema.reminders.create(attrs);
+      return schema.movies.create(attrs);
     });
 
     this.delete("/movies/:id", (schema, request) => {
       let id = request.params.id;
-      return schema.reminders.find(id).destroy();
+      return schema.movies.find(id).destroy();
     });
   }
 });

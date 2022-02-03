@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "ignoreFiles": [
+    "src/resources/css/bootstrap-helpers.css",
+    "src/resources/css/variables.css",
+    "src/resources/fonts/font-awesome.css"
+  ],
+  "rules": {
+    "selector-class-pattern": null,
+    "font-family-name-quotes": null,
+    "selector-no-vendor-prefix": null,
+    "property-no-vendor-prefix": null,
+    "alpha-value-notation": null,
+    "max-line-length": null
+  }
+}
