@@ -1,19 +1,15 @@
 import { useSetRecoilState } from 'recoil';
 import { useState } from 'react';
-import { createMovie } from '../services/movieService';
+import { editMovie } from '../services/movieService';
 import { moviesAtom } from '../store/moviesAtom';
 
-export const useNewMovie = () => {
-  const [movie, setMovie] = useState({ id: null, name: '', year: '' });
+export const useEditMovie = (m) => {
+  const [movie, setMovie] = useState(m);
   const setMovieList = useSetRecoilState(moviesAtom);
 
   const submit = () => {
-    const movieWithId = {
-      ...movie,
-      id: Math.round(Math.random() * 100000),
-    };
-    createMovie(movieWithId);
-    setMovieList((ml) => ([...ml, movieWithId]));
+    editMovie(movie);
+    setMovieList((ml) => (ml.map((mo) => (mo.id === movie.id ? movie : mo))));
   };
 
   const setMovieName = (name) => { setMovie({ ...movie, name }); };

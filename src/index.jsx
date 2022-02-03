@@ -28,6 +28,12 @@ createServer({
       return schema.movies.create(attrs);
     });
 
+    this.put('/movies/:id', (schema, request) => {
+      const { id } = request.params;
+      const attrs = JSON.parse(request.requestBody);
+      return schema.movies.find(id).update(attrs);
+    });
+
     this.delete('/movies/:id', (schema, request) => {
       const { id } = request.params;
       return schema.movies.find(id).destroy();

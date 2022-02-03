@@ -7,9 +7,11 @@ import { useSetRecoilState } from 'recoil';
 import { DeleteMovieDialog } from '../DeleteMovieDialog';
 import { moviesAtom } from '../store/moviesAtom';
 import { deleteMovie } from '../services/movieService';
+import { EditMovieDialog } from '../EditMovieDialog';
 
 export const MovieActions = ({ item }) => {
-  const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
+  const [hideDeleteDialog, { toggle: toggleHideDeleteDialog }] = useBoolean(true);
+  const [hideEditDialog, { toggle: toggleHideEditDialog }] = useBoolean(true);
   const setMovieList = useSetRecoilState(moviesAtom);
 
   const onDelete = (movie) => {
@@ -22,23 +24,27 @@ export const MovieActions = ({ item }) => {
   return (
     <>
       <DeleteMovieDialog
-        hideDialog={hideDialog}
-        toggleHideDialog={toggleHideDialog}
+        hideDialog={hideDeleteDialog}
+        toggleHideDialog={toggleHideDeleteDialog}
         confirmAction={() => { onDelete(item); }}
+      />
+      <EditMovieDialog
+        movie={item}
+        hideDialog={hideEditDialog}
+        toggleHideDialog={toggleHideEditDialog}
       />
       <TooltipHost content="Edit Movie">
         <IconButton
           iconProps={{ iconName: 'Edit' }}
           title="Emoji"
-          disabled
-          onClick={() => {}}
+          onClick={toggleHideEditDialog}
         />
       </TooltipHost>
       <TooltipHost content="Delete Movie">
         <IconButton
           iconProps={{ iconName: 'Delete' }}
           title="Emoji"
-          onClick={toggleHideDialog}
+          onClick={toggleHideDeleteDialog}
         />
       </TooltipHost>
     </>

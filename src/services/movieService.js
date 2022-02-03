@@ -13,6 +13,18 @@ export const createMovie = (movie) => {
     .then((x) => x.json());
 };
 
+export const editMovie = (movie) => {
+  const options = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(movie),
+  };
+  return fetch(`/api/movies/${movie.id}`, options)
+    .then((x) => x.json());
+};
+
 export const deleteMovie = (movie) => {
   const options = {
     method: 'DELETE',

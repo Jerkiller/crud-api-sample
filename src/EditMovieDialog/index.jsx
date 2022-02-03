@@ -1,33 +1,34 @@
 import React from 'react';
 import { TextField } from '@fluentui/react/lib/TextField';
-
 import { Dialog, DialogFooter, DialogType } from '@fluentui/react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 import PropTypes from 'prop-types';
-import { useNewMovie } from './useNewMovie';
+import { useEditMovie } from './useEditMovie';
 
-export const CreateMovieDialog = ({
-  hideDialog, toggleHideDialog,
+export const EditMovieDialog = ({
+  hideDialog, toggleHideDialog, movie: baseMovie,
 }) => {
   const {
-    setMovieName, setMovieYear, submit, movie,
-  } = useNewMovie();
+    movie, setMovieName, setMovieYear, submit,
+  } = useEditMovie(baseMovie);
   return (
     <Dialog
       hidden={hideDialog}
       onDismiss={toggleHideDialog}
       dialogContentProps={{
-        type: DialogType.largeHeader,
-        title: 'Create Movie',
+        type: DialogType.normal,
+        title: 'Edit Movie',
       }}
     >
       <TextField
         label="Name"
+        value={movie.name}
         placeholder='Name'
         onChange={(e) => setMovieName(e.target.value)}
       />
       <TextField
         label="Year"
+        value={movie.year}
         placeholder='Year'
         onChange={(e) => setMovieYear(Number(e.target.value))}
       />
@@ -35,15 +36,20 @@ export const CreateMovieDialog = ({
         <DefaultButton onClick={toggleHideDialog} text="Cancel" />
         <PrimaryButton
           onClick={() => { toggleHideDialog(); submit(); }}
-          text="Create"
-          disabled={movie.name.trim() === '' || movie.year === '' || Number.isNaN(movie.year)}
+          text="Edit"
+          disabled={movie.name.trim() === '' || Number.isNaN(movie.year)}
         />
       </DialogFooter>
     </Dialog>
   );
 };
 
-CreateMovieDialog.propTypes = {
+EditMovieDialog.propTypes = {
   hideDialog: PropTypes.bool.isRequired,
   toggleHideDialog: PropTypes.func.isRequired,
+  movie: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    name: PropTypes.string,
+    year: PropTypes.number,
+  }).isRequired,
 };
