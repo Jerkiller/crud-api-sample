@@ -4,7 +4,7 @@ import { IconButton } from '@fluentui/react/lib/Button';
 import PropTypes from 'prop-types';
 import { useBoolean } from '@fluentui/react-hooks';
 import { useSetRecoilState } from 'recoil';
-import DeleteDialog from '../DeleteDialog';
+import { DeleteMovieDialog } from '../DeleteMovieDialog';
 import { moviesAtom } from '../store/moviesAtom';
 import { deleteMovie } from '../services/movieService';
 
@@ -21,7 +21,7 @@ export const MovieActions = ({ item }) => {
 
   return (
     <>
-      <DeleteDialog
+      <DeleteMovieDialog
         hideDialog={hideDialog}
         toggleHideDialog={toggleHideDialog}
         confirmAction={() => { onDelete(item); }}

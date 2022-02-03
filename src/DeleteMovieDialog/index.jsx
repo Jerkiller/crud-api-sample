@@ -3,7 +3,7 @@ import { Dialog, DialogFooter, DialogType } from '@fluentui/react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 import PropTypes from 'prop-types';
 
-const DeleteDialog = ({
+export const DeleteMovieDialog = ({
   hideDialog, toggleHideDialog, confirmAction,
 }) => (
   <Dialog
@@ -22,9 +22,7 @@ const DeleteDialog = ({
   </Dialog>
 );
 
-export default DeleteDialog;
-
-DeleteDialog.propTypes = {
+DeleteMovieDialog.propTypes = {
   hideDialog: PropTypes.bool.isRequired,
   toggleHideDialog: PropTypes.func.isRequired,
   confirmAction: PropTypes.func.isRequired,
