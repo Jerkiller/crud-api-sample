@@ -1,20 +1,36 @@
 import React from 'react';
-import { MovieList } from '../MovieList';
-import { AddMovie } from '../AddMovie';
-import './styles.css';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
+import { useBoolean } from '@fluentui/react-hooks';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { MovieList } from '../MovieList';
+import { CreateMovieDialog } from '../CreateMovieDialog';
+import './styles.css';
 
 initializeIcons();
 
-function App() {
+export const App = () => {
+  const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <AddMovie />
-        <MovieList />
-      </header>
+    <div className="ms-Grid">
+      <div className="ms-Grid-row">
+        <div className="ms-Grid-col ms-sm12 ms-xl6 centered-col">
+          <div className="page-wrapper">
+            <CreateMovieDialog
+              hideDialog={hideDialog}
+              toggleHideDialog={toggleHideDialog}
+            />
+            <MovieList />
+
+            <PrimaryButton
+              className='mt-2'
+              iconProps={{ iconName: 'Add' }}
+              onClick={toggleHideDialog}
+              text="Create Movie"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
-
-export { App };
+};
