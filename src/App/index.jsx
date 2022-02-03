@@ -16,6 +16,8 @@ export const App = () => {
       <div className="ms-Grid-row">
         <div className="ms-Grid-col ms-sm12 ms-xl6 centered-col">
           <div className="page-wrapper">
+            <h2 className='ms-fontSize-28'>Movies CRUD</h2>
+
             <CreateMovieDialog
               hideDialog={hideDialog}
               toggleHideDialog={toggleHideDialog}

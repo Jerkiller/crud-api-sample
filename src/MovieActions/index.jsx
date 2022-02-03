@@ -36,14 +36,12 @@ export const MovieActions = ({ item }) => {
       <TooltipHost content="Edit Movie">
         <IconButton
           iconProps={{ iconName: 'Edit' }}
-          title="Emoji"
           onClick={toggleHideEditDialog}
         />
       </TooltipHost>
       <TooltipHost content="Delete Movie">
         <IconButton
           iconProps={{ iconName: 'Delete' }}
-          title="Emoji"
           onClick={toggleHideDeleteDialog}
         />
       </TooltipHost>

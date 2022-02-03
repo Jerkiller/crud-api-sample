@@ -1,12 +1,16 @@
 export const getMovies = () => fetch('/api/movies')
   .then((x) => x.json());
 
+const baseOptions = {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+};
+
 export const createMovie = (movie) => {
   const options = {
+    ...baseOptions,
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify(movie),
   };
   return fetch('/api/movies', options)
@@ -15,10 +19,8 @@ export const createMovie = (movie) => {
 
 export const editMovie = (movie) => {
   const options = {
+    ...baseOptions,
     method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify(movie),
   };
   return fetch(`/api/movies/${movie.id}`, options)
@@ -27,10 +29,8 @@ export const editMovie = (movie) => {
 
 export const deleteMovie = (movie) => {
   const options = {
+    ...baseOptions,
     method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
   };
   return fetch(`/api/movies/${movie.id}`, options);
 };

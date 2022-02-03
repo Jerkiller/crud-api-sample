@@ -34,7 +34,6 @@ export const MovieList = () => {
     {
       key: 'actions',
       name: 'Actions',
-      // iconName: 'Page',
       fieldName: 'actions',
       onRender: (item) => (<MovieActions item={item} />),
     },
