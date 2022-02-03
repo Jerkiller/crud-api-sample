@@ -6,6 +6,7 @@ import { getMovies } from '../services/movieService';
 import { moviesAtom } from '../store/moviesAtom';
 
 export const MovieList = () => {
+  // TODO Separate logic/data fetching with a Custom Hook
   const [movieList, setMovieList] = useRecoilState(moviesAtom);
 
   useEffect(() => {
